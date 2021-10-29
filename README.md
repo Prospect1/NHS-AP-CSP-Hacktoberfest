@@ -1,3 +1,2 @@
-# hello-world
-tutorial
-red
+# Hacktoberfest
+Add any program you'd like to!
