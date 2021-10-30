@@ -1,0 +1,40 @@
+Start
+
+
+Get random number 1-100
+
+Answer = random number
+
+guess = 0
+
+repeat until guess = Answer
+ 
+ 
+ {
+ 
+ 
+ guess = Ask for "guess 1-100"
+ 
+ 
+ if guess greater than Answer
+ { 
+ 
+ say "too high"
+ 
+ }
+ 
+ if guess less than Answer
+ {
+say "too low"
+
+
+
+}
+
+say "Congrats you got it"
+ 
+ 
+ 
+ 
+ 
+ 
