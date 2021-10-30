@@ -1,0 +1,215 @@
+"""
+Ethan you know exactly what this is
+"""
+
+#### ---- IMPORT LIBRARIES ---- ####
+
+# B1: IMPORT the random library
+import random
+
+# I1: IMPORT the lemonade library
+import lemonade
+
+
+#### ---- SET UP STARTING VALUES ---- ####
+
+# A1: Make a variable called day_count with value 1
+day_count = 1
+
+# D1: Make a variable called money with value 100.0
+money = 100.0
+
+
+#### ---- DAY LOOP ---- ####
+
+# A2: WHILE day_count is LESS THAN OR EQUAL TO 7
+while day_count < 7 or day_count == 7:
+
+    # B2: Make a variable called weather. Assign it an
+    # empty string ("")
+    weather = ""
+
+    # B3: Make a variable called rand_w. Assign it a
+    # random integer between 1 and 4 using RANDINT
+    rand_w = random.randint(1, 4)
+
+    # B4: Write a conditional using IF and 3 ELIFS.
+    # Check if rand_w is EQUAL TO 1, 2, 3, or 4.
+    # Based on the number, set weather to "hot",
+    # "sunny", "overcast", or "cold" in that order.
+    if rand_w == 1:
+        weather = "hot"
+    if rand_w == 2:
+        weather = "sunny"
+    if rand_w == 3:
+        weather = "overcast"
+    if rand_w == 4:
+        weather = "cold"
+        
+
+
+
+
+
+
+
+
+
+    #### --- DAILY INTRO --- ####
+        
+    # A3: Print "Day " concatenated with day_count
+    print("Day " + str(day_count))
+
+    # B5: Print "The weather is: " concatenated with
+    # weather
+    # ---> TEST AFTER THIS LINE <--- #
+    print("The weather is: " + weather)
+
+    # D2: Print the user's current total money
+    print("Your balance is $" + str(money))
+
+    # D3: Print a blank line for spacing
+    # ---> TEST AFTER THIS LINE <--- #
+    print("")
+
+
+    #### --- GET INPUTS --- ####
+    
+    # C1: Ask player how many glasses of lemonade to
+    # make at $.50 a glass. Convert to an int and store
+    # in the variable glasses.
+    glasses = int(input("How many glasses of lemonade would you like to make? (1 = 0.50) "))
+    if glasses < 0:
+        glasses = 0
+    # C2: Ask player how much to charge per glass,
+    # from $1 - $5. Convert to a float and store in the
+    # variable cost.
+    cost = float(input("How much do you want to charge per glass? ($1-$5) "))
+    if cost < 0:
+        cost = 0
+    if cost > 5:
+        print("BOI U HACKIN")
+        cost = 0
+    # C3: Ask player how many ads to place at $5/ad.
+    # Convert to an int and store in the variable ads.
+    # ---> TEST AFTER THIS LINE <--- #
+    ads = int(input("How many ads would you like to buy? ($5 an ad) "))
+    if ads < 0:
+        ads = 0
+    
+    # C4: Print a blank line for spacing
+    # ---> TEST AFTER THIS LINE <--- #
+    print("")
+
+    #### --- CALCULATE VALUES --- ####
+
+    # E1: Make a variable glasses_cost. Assign it the
+    # result of multiplying .5 * the number of glasses
+    # from C1
+    glasses_cost = glasses * 0.5
+
+    # F1: Make a variable ads_cost. Assign it the
+    # result of multiplying 5 * the number of ads from
+    # C3
+    ads_cost = ads * 5
+
+    # G1: IF money is GREATER THAN OR EQUAL TO
+    # glasses_cost
+
+    if money > glasses_cost or money == glasses_cost:
+
+    # E2: Decrement money by glasses_cost
+    # ---> TEST AFTER THIS LINE <--- #
+        money -= glasses_cost
+
+        # G2: Re-indent E2 to be inside the BLOCK for
+        # the G1 if-clause
+        
+    # G3: ELSE
+    else:
+        
+
+        # G4: Divide money by .5, then convert the
+        # result to an int. Store in variable glasses.
+        glasses = money / 0.5
+        glasses = int(glasses)
+
+        # G5: Decrement money by glasses * .5
+        money -= glasses * 0.5
+        # G6: Print "You only had enough money for " +
+        # glasses + " glasses"
+        # ---> TEST AFTER THIS LINE <--- #
+        print("You only had enough money for " + glasses + " glasses")
+
+    # H1: IF money is GREATER THAN OR EQUAL TO ads_cost
+    if money > ads_cost or money == ads_cost:
+
+    # F2: Decrement money by ads_cost
+    # ---> TEST AFTER THIS LINE <--- #
+        money -= ads_cost
+
+        # H2: Re-indent F2 to be inside the BLOCK for
+        # the H1 if-clause
+
+    # H3: ELSE
+    else:
+        
+
+        # H4: Divide money by 5, then convert the
+        # result to an int. Store in variable ads.
+        ads = money / 5
+
+        # H5: Decrement money by ads * 5
+        money -= ads * 5
+
+        # H6: Print "You only had enough money for " +
+        # ads + " ads"
+        # ---> TEST AFTER THIS LINE <--- #
+        print("You only had enough money for " + ads + " ads")
+
+    # I2: CALL the FUNCTION sell_lemonade from the
+    # lemonade library. Use the arguments: rand_w,
+    # glasses, cost, and ads. Store the result in a
+    # variable called sold.
+    sold = lemonade.sell_lemonade(rand_w, glasses, cost, ads)
+
+    # I3: Multiply sold from I2 by cost. Store in a
+    # variable called profit
+    profit = sold * cost
+
+    # I4: Increment money by profit
+    money += profit
+
+
+    #### --- DAILY SUMMARY --- ####
+
+    # I5: Print glasses sold (sold variable) and how
+    # much money was made (profit variable)
+    # ---> TEST AFTER THIS LINE <--- #
+    wasted = glasses - sold
+    print("Glasses sold: " + str(sold) + " money made: " + str(profit))
+    print("Lemonade wasted " + str(wasted) + " Today")
+    # A4: Print a blank line for spacing
+    print("")
+
+    # A5: Increment day_count by 1
+    # ---> TEST AFTER THIS LINE <--- #
+    day_count += 1
+
+
+#### ---- ENDGAME SUMMARY ---- ####
+
+# J1: Print that it's been a week, and tell the user
+# how much money they ended the game with
+print("Its been a week! you ended the game with a profit of...")
+
+# J2: Print the total profit made (money - 100.0)
+# ---> TEST AFTER THIS LINE <--- #
+print(money - 100)
+
+
+
+# Turn in your Coding Project.
+
+
+
