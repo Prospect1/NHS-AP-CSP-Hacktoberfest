@@ -1,0 +1,52 @@
+import pygame
+import tsk
+pygame.init()
+w = pygame.display.set_mode([400,400])
+w.fill((255,255,255))
+r = 100
+g = 0
+b = 0
+rs = 1
+gs = 1
+bs = 1
+skip_r = False
+done = True
+while done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = False
+        if tsk.get_key_pressed(pygame.K_w):
+            color = (r,g,b)
+            if r < 255 and not skip_r:
+                r += rs
+            if r >= 255 and not skip_r:
+                if g < 255:
+                    g += gs
+                    if g >= 255:
+                        skip_r = True
+            if g <= 255 and skip_r and r > 0:
+                r -= rs
+            if skip_r and r == 0 and b < 255:
+                b += bs
+            if skip_r and b == 255 and g > 0:
+                g -= gs
+            if skip_r and g == 0 and b == 255 and r >= 0:
+                r += rs
+            if skip_r and g == 0 and b >= 0:
+                b -= bs
+                if b == 0:
+                    r = 100
+                    g = 0
+                    b = 0
+                    skip_r = False
+            x, y = pygame.mouse.get_pos()
+            pygame.draw.circle(w, (color), (x,y),10)
+
+
+
+
+
+
+
+
+            pygame.display.flip()
